@@ -29,8 +29,8 @@ if not api_key:
     st.stop()
 
 # --- חיבור לבסיס הנתונים ---
-# מכיוון שהקובץ chroma.sqlite3 נמצא בתיקייה הראשית בגיט, נשתמש ב-"."
-persist_directory = "."
+# הפניה לתיקייה המלאה שהעלית ל-GitHub
+persist_directory = "./chroma_db_private"
 
 @st.cache_resource
 def init_rag():
@@ -39,7 +39,7 @@ def init_rag():
         openai_api_key=api_key
     )
     
-    # טעינת מסד הנתונים הקיים
+    # טעינת מסד הנתונים הקיים מהתיקייה
     vectorstore = Chroma(
         persist_directory=persist_directory, 
         embedding_function=embeddings
